@@ -1,62 +1,26 @@
-"""
-fizzbuzz.py
-Author: Peter Bynum
-Credit: top answer in http://stackoverflow.com/questions/4432208/how-does-work-in-python
+#Peter Bynum
+#Assets and Looping Tutorial
 
-Assignment: FizzBuzz
+from ggame import App, RectangleAsset, ImageAsset, SoundAsset
+from ggame import LineStyle, Color, Sprite, Sound
 
-Write a program that prints the numbers from 1 to 100. But for 
-multiples of three print “Fizz” instead of the number and for 
-the multiples of five print “Buzz”. For numbers which are multiples 
-of both three and five print “FizzBuzz”.
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
 
-We will use a variation of this test in which the last number of 
-the series isn't necessarily 100, and the two numbers being tested 
-for multiples aren't necessarily three and five. For example, your 
-program should behave just like this:
+green = Color(0x00ff00, 1)
+black = Color(0, 1)
+noline = LineStyle(0, black)
+bg_asset = RectangleAsset(SCREEN_WIDTH, SCREEN_HEIGHT, noline, green)
+bg = Sprite(bg_asset, (0,0))
 
-How many numbers shall we print? 25
-For multiples of what number shall we print 'Fizz'? 3
-For multiples of what number shall we print 'Buzz'? 5
-1
-2
-Fizz
-4
-Buzz
-Fizz
-7
-8
-Fizz
-Buzz
-11
-Fizz
-13
-14
-FizzBuzz
-16
-17
-Fizz
-19
-Buzz
-Fizz
-22
-23
-Fizz
-Buzz
-"""
+# A ball! This is already in the ggame-tutorials repository
+ball_asset = ImageAsset("images/orb-150545_640.png")
+ball = Sprite(ball_asset, (0, 0))
+# Original image is too big. Scale it to 1/10 its original size
+ball.scale = 0.1
+# custom attributes
+ball.dir = 1
+ball.go = True
 
-num = int(input("How many numbers shall we print? "))
-m1 = int(input("For multiples of what number shall we print 'Fizz'? "))
-m2 = int(input("For multiples of what number shall we print 'Buzz'? "))
-
-for n in range (1, num+1):
-    if n%(m1*m2)==0:
-        print("FizzBuzz")
-    elif n%m1==0:
-        print("Fizz")
-    elif n%m2==0:
-        print("Buzz")
-    else:
-        print(n)
-
-        
+myapp = App(SCREEN_WIDTH, SCREEN_HEIGHT)
+myapp.run()
